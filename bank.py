@@ -16,7 +16,6 @@ class DataBank:
             'temperature': self.alerts['furnace']['off'],
             'humidity': 0,
         }
-        self.mapout = [1, 1, 1]
 
     def read(self, name):
         with open(f'{self.folder}json/{name}.json') as f:
@@ -41,6 +40,9 @@ class DataBank:
             'flags': self.flags,
         }
         self.append('log', data)
+
+    def __repr__(self):
+        return json.dumps(self.flags)
 
 
 class Remote(DataBank):

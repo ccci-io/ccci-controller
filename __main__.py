@@ -14,23 +14,26 @@ async def loop(func, args=[]):
 
 async def main():
     await asyncio.gather(
-        loop('respond'),
         loop('monitor'),
+        loop('respond'),
         loop('operate'),
     )
 
+async def input_enter():
+    message = input("Press enter to quit\n\n")
+    await message
 
 ### # TESTING # ###
 
 def once():
-    controller.respond(test=True)
     controller.monitor(test=True)
+    controller.respond(test=True)
     controller.operate(test=True)
 
 async def test():
     await asyncio.gather(
-        loop('respond', [0.2, True]),
         loop('monitor', [1, True]),
+        loop('respond', [0.05, True]),
         loop('operate', [5, True]),
     )
 
@@ -38,7 +41,7 @@ async def test():
 if __name__ == "__main__":
     command = sys.argv[1]
     if command == 'once':
-        test()
+        once()
     elif command == 'test':
         asyncio.run(test())
     elif command == 'git':
