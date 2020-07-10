@@ -10,10 +10,6 @@ from display import I2C_OLED, OLED_Menu
 from bank import DataBank
 from panel import SwitchBoard
 
-from gpiozero import LED, Button
-from signal import pause
-import RPi.GPIO as GPIO # Import Raspberry Pi GPIO library
-
 
 def check(task):
 
